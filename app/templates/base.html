@@ -1,0 +1,29 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }} - microblog</title>
+    {% else %}
+    <title>Welcome to microblog</title>
+    {% endif %}
+  </head>
+  <body>
+    <ul>
+      <div><a href="/index">Home</a></div>
+      <div><a href="/About">About</a></div>
+      <div><a href="/Projects">Projects</a></div>
+      <div><a href="/Resume">Resume</a></div>
+      <div><a href="/Contact">Contact</a></div>
+    </ul>
+    <hr>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul>
+        {% for message in messages %}
+            <li>{{ message }} </li>
+        {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </body>
+</html>
